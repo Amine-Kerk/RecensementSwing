@@ -16,6 +16,7 @@ import fr.diginamic.recensement.menu.MenuController;
 import fr.diginamic.recensement.menu.TypeTraitement;
 import fr.diginamic.recensement.ui.MenuItem;
 import fr.diginamic.recensement.ui.SwingUIBuilder;
+import fr.diginamic.recensement.utils.RecensementUtils;
 
 /**
  * Fenêtre principale qui porte les principaux composants graphiques de
@@ -30,8 +31,6 @@ public class FenetrePrincipale extends JFrame {
 
 	/** serialVersionUID */
 	private static final long serialVersionUID = -5774337273803383053L;
-	/** recensement */
-	private Recensement recensement;
 
 	/**
 	 * Constructeur
@@ -68,10 +67,14 @@ public class FenetrePrincipale extends JFrame {
 	 * 
 	 */
 	public void buildInterfaceGraphique() {
+		this.setLayout(null);
+
+		Recensement donneesRecensement = RecensementUtils.extraireDonnees();
+
+		// Lecture des données de recensement
 
 		// La mise à NULL du Layout permet d'afficher tous les éléments de l'interface
 		// graphique en coordonnées X, Y
-		this.setLayout(null);
 
 		// Création de l'afficheur qui sera ici un JTextPane.
 		JTextPane afficheur = new JTextPane();
@@ -88,7 +91,7 @@ public class FenetrePrincipale extends JFrame {
 
 		// Le MenuController va permettre de créer du lien entre les actions de
 		// l'utilisateur et les traitements à effectuer.
-		MenuController menuRouter = new MenuController(recensement, afficheur);
+		MenuController menuRouter = new MenuController(donneesRecensement, afficheur);
 
 		// Ajout du bouton en forme de gomme
 		ImageIcon image = new ImageIcon(FenetrePrincipale.class.getResource("/gomme.png"));
@@ -177,23 +180,5 @@ public class FenetrePrincipale extends JFrame {
 
 		// On rend l'interface graphique visible par défaut, ce qui est préférable.
 		this.setVisible(true);
-	}
-
-	/**
-	 * Getter
-	 * 
-	 * @return the recensement
-	 */
-	public Recensement getRecensement() {
-		return recensement;
-	}
-
-	/**
-	 * Setter
-	 * 
-	 * @param recensement the recensement to set
-	 */
-	public void setRecensement(Recensement recensement) {
-		this.recensement = recensement;
 	}
 }
