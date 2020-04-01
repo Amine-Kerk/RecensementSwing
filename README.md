@@ -1,6 +1,6 @@
 # Que fait ce projet ?
 
-Ce projet, très basique, est écrit en SWING. 
+Ce projet, très basique, est écrit en Java avec la librairie SWING. 
 Il permet de parcourir les données d'un fichier CSV contenant les données de recensement de population 2016.
 
 ## Où est le fichier de données de recensement ?
