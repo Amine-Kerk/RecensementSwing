@@ -11,3 +11,7 @@ Ce fichier est fourni dans le répertoire file.
 
 Il est conseillé de déplacer le fichier dans le répertoire C:/Temp.
 Si le fichier n'est pas trouvé dans ce répertoire, un file picker va vous permettre de choisir l'emplacement du fichier sur votre disque dur.
+
+# Quelle classe permet de lancer l'application ?
+
+Il s'agit de la classe fr.diginamic.RecensementApplication
