@@ -31,6 +31,8 @@ public class FenetrePrincipale extends JFrame {
 
 	/** serialVersionUID */
 	private static final long serialVersionUID = -5774337273803383053L;
+	private int width = 1400;
+	private int height = 718;
 
 	/**
 	 * Constructeur
@@ -41,7 +43,7 @@ public class FenetrePrincipale extends JFrame {
 		setTitle(title);
 
 		// Taille de la fenêtre
-		setSize(800, 718);
+		setSize(width, height);
 
 		// Opération à effectuer lorsque l'utilisateur clique sur la croix de fermeture:
 		// EXIT_ON_CLOSE signifie arrêt de l'application
@@ -78,13 +80,13 @@ public class FenetrePrincipale extends JFrame {
 
 		// Création de l'afficheur qui sera ici un JTextPane.
 		JTextPane afficheur = new JTextPane();
-		afficheur.setBounds(10, 200, 760, 390);
+		afficheur.setBounds(10, 200, width - 40, 390);
 		afficheur.setFont(FONT_18);
 
 		// Création d'un JScrollPane qui va permettre d'ajouter des barres de défilement
 		// horizontale et verticale avec curseurs à notre afficheur.
 		JScrollPane sp = new JScrollPane(afficheur);
-		sp.setBounds(10, 270, 760, 390);
+		sp.setBounds(10, 270, width - 40, 390);
 
 		// On ajoute le JScrollPane à l'interface graphique.
 		this.add(sp);
@@ -96,7 +98,7 @@ public class FenetrePrincipale extends JFrame {
 		// Ajout du bouton en forme de gomme
 		ImageIcon image = new ImageIcon(FenetrePrincipale.class.getResource("/gomme.png"));
 		JButton boutonGomme = new JButton(image);
-		boutonGomme.setBounds(738, 236, 30, 30);
+		boutonGomme.setBounds(width - 62, 236, 30, 30);
 
 		// Ajout d'un listener sur le bouton. Ce listener permet de déclencher une
 		// action lorsque l'utilisateur clique sur le bouton.
@@ -136,6 +138,8 @@ public class FenetrePrincipale extends JFrame {
 				"Saisissez le nombre de régions");
 		JFrame fenetreRechercheNVillesFrance = builder.buildJFrame(menuRouter, TypeTraitement.RECHERCHE_N_VILLES_FRANCE,
 				"Saisissez le nombre de villes");
+		JFrame fenetreRechercheVilles = builder.buildJFrame(menuRouter, TypeTraitement.RECHERCHE_VILLES,
+				"Nom de la région", "Numéro de département", "Population min", "Population max");
 
 		// Les MenuItem sont des composants custom composés principalement d'un libellé
 		// et d'un bouton
@@ -177,6 +181,10 @@ public class FenetrePrincipale extends JFrame {
 				fenetreRechercheNVillesFrance);
 		menuItem8.setBounds(10, 220, 500, 40);
 		this.add(menuItem8);
+
+		MenuItem menuItem9 = new MenuItem("9.", "Afficher des villes selon critères.", fenetreRechercheVilles);
+		menuItem9.setBounds(710, 10, 500, 40);
+		this.add(menuItem9);
 
 		// On rend l'interface graphique visible par défaut, ce qui est préférable.
 		this.setVisible(true);

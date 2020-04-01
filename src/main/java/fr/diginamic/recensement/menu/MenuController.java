@@ -12,6 +12,7 @@ import fr.diginamic.recensement.services.MenuService;
 import fr.diginamic.recensement.services.RecherchePopulationDepartement;
 import fr.diginamic.recensement.services.RecherchePopulationRegion;
 import fr.diginamic.recensement.services.RecherchePopulationVille;
+import fr.diginamic.recensement.services.RechercheVilles;
 
 /**
  * Classe contrôleur
@@ -71,6 +72,9 @@ public class MenuController {
 			break;
 		case RECHERCHE_N_VILLES_FRANCE:
 			rech = new AfficherVillesPlusPeupleesFrance(afficheur, parameters[0]);
+			break;
+		case RECHERCHE_VILLES:
+			rech = new RechercheVilles(afficheur, parameters[0], parameters[1], parameters[2], parameters[3]);
 			break;
 		}
 		if (rech != null) {
